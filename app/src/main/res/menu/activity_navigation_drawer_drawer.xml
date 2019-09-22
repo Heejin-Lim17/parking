@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+
+    <item android:title="그룹">
+        <menu>
+            <item
+                android:id="@+id/nav_groups"
+                android:icon="@drawable/ic_group_add_black_24dp"
+                android:title="그룹"/>
+            <item
+                android:id="@+id/nav_my_group"
+                android:icon="@drawable/ic_group_black_24dp"
+                android:title="내그룹"/>
+
+        </menu>
+    </item>
+
+
+    <item android:title="주차장정보">
+        <menu>
+            <item
+                    android:id="@+id/nav_dis_info"
+                    android:icon="@drawable/ic_pin_drop_black_24dp"
+                    android:title="장애인 주차구역"/>
+            <item
+                    android:id="@+id/nav_off_info"
+                    android:icon="@drawable/ic_pin_drop_black_24dp"
+                    android:title="명절/연휴/공휴일 주차구역"/>
+        </menu>
+    </item>
+
+    <item android:title="회원정보">
+        <menu>
+            <item
+                    android:id="@+id/nav_mem_info"
+                    android:icon="@drawable/ic_folder_shared_black_24dp"
+                    android:title="회원정보"/>
+            <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_close_black_24dp"
+                    android:title="로그아웃"/>
+        </menu>
+    </item>
+
+</menu>
