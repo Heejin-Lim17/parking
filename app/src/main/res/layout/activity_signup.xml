@@ -19,7 +19,7 @@
                 android:text="회원가입"
                 android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" android:textAppearance="@android:style/TextAppearance.Large"/>
 
     </LinearLayout>
 
@@ -57,7 +57,7 @@
         <EditText
                 android:id="@+id/car_num"
                 android:hint="00가0000"
-                android:inputType="number"
+                android:inputType="text"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -143,25 +143,19 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="395dp"
-            android:layout_height="58dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout6">
+            android:layout_height="58dp" tools:layout_editor_absoluteY="216dp" tools:layout_editor_absoluteX="8dp">
         <TextView
                 android:text="아이디"
                 android:textColor="@color/colorPrimary"
                 android:gravity="right"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" android:layout_weight="1"/>
+                android:layout_width="98dp"
+                android:layout_height="wrap_content"/>
         <EditText
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:id="@+id/signup_id"
                 android:hint="ID"
-                android:ems="10"
-                android:id="@+id/signup_id" android:layout_weight="1"/>
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
