@@ -32,6 +32,7 @@
             android:text="오늘도 안전주차하세요:)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/button" android:background="#FFC107"
-            android:textAppearance="@android:style/TextAppearance.Large" android:textAlignment="viewStart"/>
+            android:textAppearance="@android:style/TextAppearance.Large" android:textAlignment="viewStart"
+         />
 
 </LinearLayout>
