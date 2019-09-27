@@ -13,7 +13,8 @@
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="8dp"
+            android:id="@+id/linearLayout8">
 
         <TextView
                 android:text="회원가입"
@@ -26,10 +27,12 @@
     <LinearLayout
             android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="147dp"
-            android:id="@+id/linearLayout3" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="1.0">
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout3"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="128dp"
+            app:layout_constraintTop_toTopOf="parent">
         <TextView
                 android:text="이름"
                 android:textColor="@color/colorPrimary"
@@ -46,14 +49,18 @@
             android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="0dp" android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout5">
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout5" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"
+            android:id="@+id/linearLayout9">
         <TextView
                 android:text="차량번호"
                 android:textColor="@color/colorPrimary"
                 android:gravity="right"
                 android:layout_width="90dp"
-                android:layout_height="wrap_content" android:id="@+id/car_num"/>
+                android:layout_height="wrap_content"/>
         <EditText
                 android:id="@+id/car_num"
                 android:hint="00가0000"
@@ -64,10 +71,11 @@
     <LinearLayout
             android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="511dp"
+            android:layout_height="wrap_content"
             android:id="@+id/linearLayout5" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="159dp"
+            app:layout_constraintBottom_toBottomOf="parent">
         <TextView
                 android:text="이메일"
                 android:textColor="@color/colorPrimary"
@@ -85,8 +93,10 @@
     <LinearLayout
             android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="362dp"
-            tools:layout_editor_absoluteX="0dp" android:id="@+id/linearLayout4">
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout4" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+            android:layout_marginBottom="88dp" app:layout_constraintBottom_toTopOf="@+id/linearLayout5">
         <TextView
                 android:text="암호"
                 android:textColor="@color/colorPrimary"
@@ -109,7 +119,8 @@
             app:layout_constraintBottom_toTopOf="@+id/linearLayout4" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="1.0"
-            android:id="@+id/linearLayout6">
+            android:id="@+id/linearLayout6" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
         <TextView
                 android:text="사진"
                 android:textColor="@color/colorPrimary"
@@ -130,7 +141,7 @@
             android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.0">
+            app:layout_constraintHorizontal_bias="0.0" android:id="@+id/linearLayout10">
         <Button
                 android:id="@+id/btn_signup_ok"
                 android:text="확인"
@@ -143,8 +154,12 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
-            android:layout_width="395dp"
-            android:layout_height="58dp" tools:layout_editor_absoluteY="216dp" tools:layout_editor_absoluteX="8dp">
+            android:layout_width="0dp"
+            android:layout_height="58dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3" android:id="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+    >
         <TextView
                 android:text="아이디"
                 android:textColor="@color/colorPrimary"

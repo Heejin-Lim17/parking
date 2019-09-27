@@ -1,5 +1,6 @@
 package kr.ac.gachon.parking
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -74,8 +75,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_mem_info -> {
 
             }
-            R.id.nav_logout -> {
-
+            R.id.nav_login -> {
+                val login_intent= Intent(this, LoginActivity::class.java)
+                startActivity(login_intent)
             }
         }
 
