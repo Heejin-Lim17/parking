@@ -13,6 +13,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".GroupMakingActivity">
+        </activity>
+        <activity android:name=".GroupActivity">
+        </activity>
         <activity android:name=".SignupActivity">
         </activity>
         <activity

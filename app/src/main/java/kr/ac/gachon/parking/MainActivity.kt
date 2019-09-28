@@ -61,7 +61,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_groups-> {
-                // Handle the camera action
+                val group_intent=Intent(this, GroupActivity::class.java)
+                startActivity(group_intent)
             }
             R.id.nav_my_group -> {
 

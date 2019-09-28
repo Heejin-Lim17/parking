@@ -47,7 +47,7 @@
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
-            android:layout_marginBottom="60dp" app:layout_constraintBottom_toTopOf="@+id/linearLayout">
+            android:layout_marginBottom="60dp" app:layout_constraintBottom_toTopOf="@+id/linearLayoutb">
 
         <EditText
                 android:id="@+id/login_id"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:id="@+id/linearLayout"
+            android:id="@+id/linearLayoutb"
             app:layout_constraintHorizontal_bias="1.0" android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2">
 
@@ -81,7 +81,7 @@
                 android:id="@+id/btn_login"
                 android:text="로그인"
                 android:layout_width="250dp"
-                android:layout_height="60dp"/>
+                android:layout_height="60dp" android:background="#f1eb9a"/>
 
         <!--<CheckBox
                 android:id="@+id/cb_login_save"
@@ -110,6 +110,6 @@
                 android:id="@+id/btn_signup"
                 android:text="회원가입"
                 android:layout_width="250dp"
-                android:layout_height="60dp"/>
+                android:layout_height="60dp" android:background="#f8a978"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
