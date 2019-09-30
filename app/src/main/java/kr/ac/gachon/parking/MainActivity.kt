@@ -74,7 +74,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_mem_info -> {
-
+                val myinfo_intent=Intent(this, MyInfoActivity::class.java)
+                startActivity(myinfo_intent)
             }
             R.id.nav_login -> {
                 val login_intent= Intent(this, LoginActivity::class.java)
