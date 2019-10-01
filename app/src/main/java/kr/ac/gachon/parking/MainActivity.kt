@@ -11,6 +11,9 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kr.ac.gachon.parking.Group.GroupActivity
+import kr.ac.gachon.parking.Customer.LoginActivity
+import kr.ac.gachon.parking.Customer.MyInfoActivity
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
