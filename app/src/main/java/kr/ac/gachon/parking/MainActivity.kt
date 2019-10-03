@@ -1,5 +1,6 @@
 package kr.ac.gachon.parking
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,11 +10,15 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import kr.ac.gachon.parking.Group.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
+import net.daum.android.map.MapView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,7 +39,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        //mapview
+        var mapView = MapView(this)
+        //mapView.setDaumMapApiKey(" 1d57e58a63f303253a2081f1a0ce9146"); //발급받은 API키를 여기에 삽입한다.
+        var mapViewContainer = findViewById(R.id.map_view) as ViewGroup
+        mapViewContainer.addView(mapView)
+
     }
+
+
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -90,3 +104,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 }
+
