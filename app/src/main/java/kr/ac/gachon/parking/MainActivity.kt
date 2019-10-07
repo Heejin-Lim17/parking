@@ -1,6 +1,5 @@
 package kr.ac.gachon.parking
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -11,19 +10,27 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewGroup
-import android.widget.Toast
+import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.NaverMapSdk
+import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import kr.ac.gachon.parking.Group.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
-import net.daum.android.map.MapView
+import kr.ac.gachon.parking.Info.DisabledInfo
+import kr.ac.gachon.parking.Info.HolidayInfo
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        NaverMapSdk.getInstance(this).client = NaverMapSdk.NaverCloudPlatformClient("cc86tt11qz")
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
@@ -40,11 +47,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        //mapview
-        var mapView = MapView(this)
-        //mapView.setDaumMapApiKey(" 1d57e58a63f303253a2081f1a0ce9146"); //발급받은 API키를 여기에 삽입한다.
-        var mapViewContainer = findViewById(R.id.map_view) as ViewGroup
+        //지도 띄우기
+        val mapView = MapView(this)
+        val mapViewContainer = findViewById(R.id.map_view) as ViewGroup
         mapViewContainer.addView(mapView)
+
+        //지도에 현재 위치 표시
+//        val marker = Marker()
+//        val naverMap=new NaverMap(this)
+//        marker.map = naverMap
+//        val locationOverlay = naverMap.locationOverlay
+//        locationOverlay.isVisible = true
+//        locationOverlay.icon = OverlayImage.fromResource(R.drawable.ic_my_location_black_24dp)
+
 
     }
 
@@ -85,9 +100,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.nav_dis_info -> {
+                val dis_info_intent=Intent(this, DisabledInfo::class.java)
+                startActivity(dis_info_intent)
 
             }
             R.id.nav_off_info -> {
+                val holiday_info_intent=Intent(this, HolidayInfo::class.java)
+                startActivity(holiday_info_intent)
 
             }
             R.id.nav_mem_info -> {
