@@ -21,6 +21,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".ParkingFunction.ParkingFunctionFinish">
+        </activity>
+        <activity android:name=".ParkingFunction.ParkingFunction">
+        </activity>
         <activity android:name=".Info.HolidayInfo">
         </activity>
         <activity android:name=".Info.DisabledInfo">

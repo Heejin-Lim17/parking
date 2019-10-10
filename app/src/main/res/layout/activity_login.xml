@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Customer.LoginActivity">
+        tools:context=".Customer.LoginActivity" android:background="#fffde8">
 
     <LinearLayout
             android:id="@+id/textHead"
@@ -20,7 +20,7 @@
         <TextView
                 android:text="로그인"
                 android:gravity="center_horizontal"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#444444"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:layout_width="match_parent"

@@ -22,6 +22,7 @@ import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
+import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -34,9 +35,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        //floating action button
+        fab.setOnClickListener {
+            val func_intent=Intent(this, ParkingFunction::class.java)
+            startActivity(func_intent)
         }
 
         val toggle = ActionBarDrawerToggle(
