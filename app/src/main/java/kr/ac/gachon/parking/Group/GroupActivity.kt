@@ -6,11 +6,14 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_group.*
 import kr.ac.gachon.parking.R
 
+
+
+
 class GroupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_group)
+        setContentView(kr.ac.gachon.parking.R.layout.activity_group)
 
         var group_list_adapter= GroupItemAdapter(this)
         group_listview.adapter=group_list_adapter
@@ -24,6 +27,7 @@ class GroupActivity : AppCompatActivity() {
             }
 
         }
+
     }
 
 }

@@ -1,39 +1,55 @@
+
+
+
 package kr.ac.gachon.parking
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
+import androidx.annotation.NonNull
+import androidx.annotation.UiThread
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.ViewGroup
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.NaverMapSdk
+import androidx.core.content.ContextCompat.startActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
+import com.naver.maps.map.util.FusedLocationSource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Group.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
+import kr.ac.gachon.parking.Group.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
 import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
+import com.naver.maps.map.CameraUpdate.zoomTo
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+
+
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+
+    //private lateinit var locationSource: FusedLocationSource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        NaverMapSdk.getInstance(this).client = NaverMapSdk.NaverCloudPlatformClient("cc86tt11qz")
-
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+//        locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
+
 
         //floating action button
         fab.setOnClickListener {
@@ -47,24 +63,40 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+
+
         nav_view.setNavigationItemSelectedListener(this)
 
-        //지도 띄우기
-        val mapView = MapView(this)
-        val mapViewContainer = findViewById(R.id.map_view) as ViewGroup
-        mapViewContainer.addView(mapView)
+//        NaverMapSdk.getInstance(this).client = NaverMapSdk.NaverCloudPlatformClient("cc86tt11qz")
 
-        //지도에 현재 위치 표시
-//        val marker = Marker()
-//        val naverMap=new NaverMap(this)
-//        marker.map = naverMap
-//        val locationOverlay = naverMap.locationOverlay
-//        locationOverlay.isVisible = true
-//        locationOverlay.icon = OverlayImage.fromResource(R.drawable.ic_my_location_black_24dp)
+
+        //지도 띄우기
+//        val mapView = MapView(this)
+//        val mapViewContainer = findViewById(R.id.map) as ViewGroup
+//        mapViewContainer.addView(mapView)
 
 
     }
 
+//    //Locationing
+//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+//        if(locationSource.onRequestPermissionsResult(
+//                requestCode,permissions,grantResults)){
+//            return;
+//        }
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//    }
+
+//    override fun onMapReady(naverMap: NaverMap) {
+//        naverMap.locationSource=locationSource
+//        naverMap.locationTrackingMode=LocationTrackingMode.Follow
+//        naverMap.addOnLocationChangeListener { location->
+//        }
+//    }
+
+//    companion object {
+//        private const val LOCATION_PERMISSION_REQUEST_CODE=1000
+//    }
 
 
     override fun onBackPressed() {
@@ -99,7 +131,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(group_intent)
             }
             R.id.nav_my_group -> {
-
+                val my_group_intent=Intent(this, MyGroupActivity::class.java)
+                startActivity(my_group_intent)
             }
             R.id.nav_dis_info -> {
                 val dis_info_intent=Intent(this, DisabledInfo::class.java)
@@ -124,5 +157,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
 }
+
+
+
+
 
