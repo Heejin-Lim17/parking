@@ -8,12 +8,12 @@ import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.util.FusedLocationSource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kr.ac.gachon.parking.Group.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
@@ -25,7 +25,7 @@ import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
 
-    //private lateinit var locationSource: FusedLocationSource
+    private lateinit var locationSource: FusedLocationSource
     private var mapView: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         /* MapView 설정 */
         mapView = findViewById(R.id.map_view)
         mapView!!.getMapAsync(this)
-//        locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
+
+        /* 지도의 초기 옵션 지정 */
+//        val options = NaverMapOptions()
+//            .camera(CameraPosition(LatLng(35.1798159, 129.0750222), 8.0))
+
+
+        locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
 
 
         //floating action button
@@ -67,31 +73,29 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     }
 
-//    //Locationing
-//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-//        if(locationSource.onRequestPermissionsResult(
-//                requestCode,permissions,grantResults)){
-//            return;
-//        }
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//    }
+    //Locationing
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(locationSource.onRequestPermissionsResult(
+                requestCode,permissions,grantResults)){
+            return;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
 
-//    override fun onMapReady(naverMap: NaverMap) {
-//        naverMap.locationSource=locationSource
-//        naverMap.locationTrackingMode=LocationTrackingMode.Follow
-//        naverMap.addOnLocationChangeListener { location->
-//        }
-//    }
-
-//    companion object {
-//        private const val LOCATION_PERMISSION_REQUEST_CODE=1000
-//    }
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE=1000
+    }
 
     /* MapView */
     override fun onMapReady(naverMap: NaverMap) {
         val marker = Marker()
         marker.position = LatLng(37.5670135, 126.9783740)
         marker.map = naverMap
+
+        naverMap.locationSource=locationSource
+        naverMap.locationTrackingMode=LocationTrackingMode.Follow
+        naverMap.addOnLocationChangeListener { location->
+        }
     }
 
     override fun onBackPressed() {

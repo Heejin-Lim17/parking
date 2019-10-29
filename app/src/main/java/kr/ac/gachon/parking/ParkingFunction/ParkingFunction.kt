@@ -1,16 +1,17 @@
 package kr.ac.gachon.parking.ParkingFunction
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_parking_function.*
+import kotlinx.android.synthetic.main.activity_parking_function.view.*
 import kr.ac.gachon.parking.MainActivity
-
-
+import kr.ac.gachon.parking.R
 
 
 class ParkingFunction : AppCompatActivity() {
@@ -23,11 +24,16 @@ class ParkingFunction : AppCompatActivity() {
         //시
         spin_hour.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,Hour.values().map{it.hour})
         spin_hour.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) { }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val pageView = findViewById<Spinner>(R.id.spin_hour)
+
                 val hour=Hour.values()[position]
+
+                pageView.spin_hour.text = hour.hour
+//                val hour=Hour.values()[position]
+
             }
         }
         //분
