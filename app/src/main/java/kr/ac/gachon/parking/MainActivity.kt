@@ -1,28 +1,17 @@
-
-
-
 package kr.ac.gachon.parking
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.annotation.UiThread
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.*
+import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
-import com.naver.maps.map.overlay.OverlayImage
-import com.naver.maps.map.util.FusedLocationSource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Group.GroupActivity
@@ -32,15 +21,12 @@ import kr.ac.gachon.parking.Group.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
 import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
-import com.naver.maps.map.CameraUpdate.zoomTo
 
 
-
-
-
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
+class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
 
     //private lateinit var locationSource: FusedLocationSource
+    private var mapView: MapView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        /* MapView 설정 */
+        mapView = findViewById(R.id.map_view)
+        mapView!!.getMapAsync(this)
 //        locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
 
 
@@ -98,6 +87,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        private const val LOCATION_PERMISSION_REQUEST_CODE=1000
 //    }
 
+    /* MapView */
+    override fun onMapReady(naverMap: NaverMap) {
+        val marker = Marker()
+        marker.position = LatLng(37.5670135, 126.9783740)
+        marker.map = naverMap
+    }
 
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {

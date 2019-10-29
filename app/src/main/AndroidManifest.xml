@@ -47,7 +47,7 @@
                 android:name=".Customer.LoginActivity"
                 android:label="@string/title_activity_login">
         </activity>
-        <activity android:name=".MapFragmentActivity">
+        <activity android:name=".MapFragmentActivity__">
         </activity>
         <activity
                 android:name=".MainActivity"
