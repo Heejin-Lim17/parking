@@ -22,11 +22,14 @@
         </activity>
         <activity android:name=".ParkingFunction.ParkingFunctionFinish">
         </activity>
-        <activity android:name=".ParkingFunction.ParkingFunction">
+        <activity android:name=".ParkingFunction.ParkingFunction"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".Info.HolidayInfo">
+        <activity android:name=".Info.HolidayInfo"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".Info.DisabledInfo">
+        <activity android:name=".Info.DisabledInfo"
+                  android:parentActivityName=".MainActivity">
         </activity>
 
         <meta-data
@@ -35,20 +38,24 @@
 
         <activity android:name=".Customer.MyInfoActivity">
         </activity>
-        <activity android:name=".Group.MyGroupActivity">
+        <activity android:name=".Group.MyGroupActivity"
+                  android:parentActivityName=".Group.GroupActivity">
         </activity>
-        <activity android:name=".Group.GroupMakingActivity">
+        <activity android:name=".Group.GroupMakingActivity"
+                  android:parentActivityName=".Group.GroupActivity">
         </activity>
-        <activity android:name=".Group.GroupActivity">
+        <activity android:name=".Group.GroupActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".Customer.SignupActivity">
+        <activity android:name=".Customer.SignupActivity"
+                  android:parentActivityName=".MainActivity">
         </activity>
         <activity
                 android:name=".Customer.LoginActivity"
-                android:label="@string/title_activity_login">
+                android:label="@string/title_activity_login"
+                android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".MapFragmentActivity__">
-        </activity>
+
         <activity
                 android:name=".MainActivity"
                 android:label="@string/title_activity_main"

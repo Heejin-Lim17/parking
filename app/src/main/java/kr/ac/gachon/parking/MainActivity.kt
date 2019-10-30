@@ -38,11 +38,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         mapView = findViewById(R.id.map_view)
         mapView!!.getMapAsync(this)
 
-        /* 지도의 초기 옵션 지정 */
-//        val options = NaverMapOptions()
-//            .camera(CameraPosition(LatLng(35.1798159, 129.0750222), 8.0))
-
-
         locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
 
 
@@ -52,24 +47,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             startActivity(func_intent)
         }
 
+        //toggle 버튼
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
-
-
         nav_view.setNavigationItemSelectedListener(this)
-
-//        NaverMapSdk.getInstance(this).client = NaverMapSdk.NaverCloudPlatformClient("cc86tt11qz")
-
-
-        //지도 띄우기
-//        val mapView = MapView(this)
-//        val mapViewContainer = findViewById(R.id.map) as ViewGroup
-//        mapViewContainer.addView(mapView)
-
 
     }
 
@@ -98,6 +83,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         }
     }
 
+
+    //뒤로가기 눌렀을 때
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
             drawer_layout.closeDrawer(GravityCompat.START)
@@ -105,13 +92,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             super.onBackPressed()
         }
     }
-
+    //메뉴 입력해놓은거 가져오기
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
-
+    //메뉴 설정
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -121,7 +108,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             else -> return super.onOptionsItemSelected(item)
         }
     }
-
+    //네비게이션 드로어 클릭했을 때 페이지 넘어가는 것
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {

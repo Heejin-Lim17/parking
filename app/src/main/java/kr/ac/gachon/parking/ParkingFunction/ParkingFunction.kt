@@ -31,7 +31,7 @@ class ParkingFunction : AppCompatActivity() {
 
                 val hour=Hour.values()[position]
 
-                pageView.spin_hour.text = hour.hour
+//                pageView.spin_hour.text = hour.hour
 //                val hour=Hour.values()[position]
 
             }
