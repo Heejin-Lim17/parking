@@ -13,6 +13,11 @@ class ParkingFunctionFinish : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parking_function_finish)
 
+        // TextView를 스피너로 입력받은 값으로 함
+        text_hour.setText(ParkingFunction.hour.hour)
+        text_minute.setText(ParkingFunction.minute.minute)
+        text_fee.setText(ParkingFunction.fee.fee)
+
         btn_func_ok.setOnClickListener {
             val func_finish_to_main= Intent(this, MainActivity::class.java)
             startActivity(func_finish_to_main)
