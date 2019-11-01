@@ -12,10 +12,10 @@
             android:text="취소"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btn_func_ok" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_func_oks" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="92dp"/>
     <Button
-            android:id="@+id/btn_func_ok"
+            android:id="@+id/btn_func_oks"
             android:text="확인"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
