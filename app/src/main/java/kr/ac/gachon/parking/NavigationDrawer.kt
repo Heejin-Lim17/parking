@@ -1,6 +1,5 @@
 package kr.ac.gachon.parking
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -12,8 +11,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
-import kr.ac.gachon.parking.Group.GroupActivity
-import kr.ac.gachon.parking.Group.MyGroupActivity
+import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
+import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
 
