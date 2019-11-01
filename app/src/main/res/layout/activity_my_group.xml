@@ -22,10 +22,10 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="380dp"
-            android:layout_height="0dp" android:layout_marginBottom="48dp"
+            android:layout_height="461dp" android:layout_marginBottom="48dp"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            app:layout_constraintHorizontal_bias="0.466"
+            app:layout_constraintHorizontal_bias="0.533"
             android:id="@+id/linearLayout10" app:layout_constraintTop_toBottomOf="@+id/textView13">
         <TextView
                 android:text="가입된 그룹, 그룹 선택"
@@ -33,10 +33,19 @@
                 android:layout_height="40dp" android:id="@+id/textView14" android:textSize="20sp"
                 android:textStyle="bold" android:textAlignment="center" android:textColor="#2d3561"/>
         <!--<ListView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="221dp" android:id="@+id/list_mygroup"/>-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="221dp" android:id="@+id/list_mygroup"/>-->
 
-        tools:context="com.appsdeveloperblog.kotlinexample3.RadioButtonExample">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      xmlns:app="http://schemas.android.com/apk/res-auto"
+                      xmlns:tools="http://schemas.android.com/tools"
+                      android:id="@+id/linearLayout"
+                      android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="169dp"
+                      tools:context="com.appsdeveloperblog.kotlinexample3.RadioButtonExample"
+                      android:background="#f5f0e3">
+        </LinearLayout>
 
 
         <TextView
@@ -49,9 +58,10 @@
                 android:layout_height="57dp"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText2" android:hint="예) 1000" android:textAlignment="center"/>
+                android:id="@+id/editText2" android:hint="예) 1000" android:textAlignment="center"
+        />
         <Button
-                android:text="Button"
+                android:text="입력 완료"
                 android:layout_width="match_parent"
                 android:layout_height="61dp" android:id="@+id/btn_fee_finish" android:textSize="18sp"
                 android:textStyle="bold" android:background="#eb7070"/>

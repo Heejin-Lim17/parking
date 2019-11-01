@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "538794689169",
+    "firebase_url": "https://parking-99fad.firebaseio.com",
+    "project_id": "parking-99fad",
+    "storage_bucket": "parking-99fad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538794689169:android:10710644781ed93767b530",
+        "android_client_info": {
+          "package_name": "kr.ac.gachon.parking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "538794689169-gqp887gdekpmtpdq7g4f8rncbti40kg3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCjZ_AvqUp6M_41-a20sR7N_pRyJI9PIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "538794689169-gqp887gdekpmtpdq7g4f8rncbti40kg3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

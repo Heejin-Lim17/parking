@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_group.*
 import kr.ac.gachon.parking.Group.GroupMakingActivity
-import kr.ac.gachon.parking.Group.GroupSearching
+import kr.ac.gachon.parking.Group.SearchGroup.GroupSearching
 import kr.ac.gachon.parking.Group.GroupSetting
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 
@@ -26,7 +26,7 @@ class GroupActivity : AppCompatActivity() {
                 val group_making_intent= Intent(this, GroupMakingActivity::class.java)
                 startActivity(group_making_intent)
             }
-            if("${curItem.groupfun}"=="그룹 검색") {
+            if("${curItem.groupfun}"=="그룹 가입") {
                 val group_making_intent = Intent(this, GroupSearching::class.java)
                 startActivity(group_making_intent)
             }

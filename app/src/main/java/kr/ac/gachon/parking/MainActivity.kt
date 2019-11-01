@@ -19,6 +19,7 @@ import kr.ac.gachon.parking.Customer.MyInfoActivity
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
+import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
@@ -57,6 +58,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 //            val func_intent=Intent(this, ParkingFunction::class.java)
 //            startActivity(func_intent)
 //        }
+
+        //floating action button
+        fab.setOnClickListener {
+            val func_intent=Intent(this, ParkingFunction::class.java)
+            startActivity(func_intent)
+        }
 
         //toggle 버튼
         val toggle = ActionBarDrawerToggle(

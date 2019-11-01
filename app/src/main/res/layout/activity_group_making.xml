@@ -100,17 +100,17 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.0" android:id="@+id/linearLayoutb"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.014">
         <Button
                 android:id="@+id/btn_signup_ok"
                 android:text="확인"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="112dp"
+                android:layout_height="wrap_content" android:background="#eb7070" android:textSize="18sp"/>
         <Button
                 android:id="@+id/btn_signup_cancel"
                 android:text="취소"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="113dp"
+                android:layout_height="wrap_content" android:textSize="18sp" android:background="#ff6f5e"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="0dp"
