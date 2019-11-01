@@ -1,4 +1,4 @@
-package kr.ac.gachon.parking.Group
+package kr.ac.gachon.parking.Group.MainGroup
 
 enum class GroupItemSel(val groupfun:String, val groupinfo:String){
     group1("그룹 검색", "접속할 그룹을 검색해보세요"),

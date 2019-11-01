@@ -1,4 +1,4 @@
-package kr.ac.gachon.parking.Group
+package kr.ac.gachon.parking.Group.MainGroup
 
 import android.content.Context
 import android.view.LayoutInflater

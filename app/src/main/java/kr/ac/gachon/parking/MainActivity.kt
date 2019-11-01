@@ -13,20 +13,26 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.util.FusedLocationSource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.app_bar_main.view.*
-import kr.ac.gachon.parking.Group.GroupActivity
+import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
-import kr.ac.gachon.parking.Group.MyGroupActivity
+import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
-import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
 
+    //지도 변수
     private lateinit var locationSource: FusedLocationSource
     private var mapView: MapView? = null
+
+//    //json 변수
+//    private var IP_ADDRESS="172.30.1.35";
+//    private var TAG="phptest"
+//    private var mArrayList: ArrayList<SeoulData>? = null
+//    private var mTextViewResult: TextView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,15 +43,20 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         /* MapView 설정 */
         mapView = findViewById(R.id.map_view)
         mapView!!.getMapAsync(this)
-
         locationSource=FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE)
 
-
-        //floating action button
-        fab.setOnClickListener {
-            val func_intent=Intent(this, ParkingFunction::class.java)
-            startActivity(func_intent)
-        }
+//        //데이터 받는 배열
+//        mArrayList=ArrayList()
+//        val task=GetData()
+//        task.execute("http://$IP_ADDRESS/getjson.php", "")
+//        mTextViewResult = findViewById(R.id.PName) as TextView
+//        mTextViewResult!!.setMovementMethod(ScrollingMovementMethod())
+//
+//        //floating action button
+//        fab.setOnClickListener {
+//            val func_intent=Intent(this, ParkingFunction::class.java)
+//            startActivity(func_intent)
+//        }
 
         //toggle 버튼
         val toggle = ActionBarDrawerToggle(
@@ -69,6 +80,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
+
+//        //json 변수
+//        private var IP_ADDRESS="172.30.1.35";
+//        private var TAG="phptest"
     }
 
     /* MapView */
@@ -82,6 +97,108 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         naverMap.addOnLocationChangeListener { location->
         }
     }
+
+//    protected fun onPostExecute(result: String?) {
+//        super.onPostExecute(result)
+//
+//        progressDialog.dismiss()
+//        mTextViewResult?.setText(result)
+//        Log.d(MainActivity.TAG, "response - " + result!!)
+//
+//    }
+//
+//    private inner class GetData : AsyncTask<String, Void, String>() {
+//
+//        internal lateinit var progressBar:ProgressBar
+//        internal var errorString: String? = null
+//
+//        override fun onPreExecute() {
+//            super.onPreExecute()
+//
+//            progressBar = ProgressBar.setVisibility(
+//                this@MainActivity,
+//                "Please Wait", null, true, true
+//            )
+//        }
+//
+////
+////        override fun onPostExecute(result: String?) {
+////            super.onPostExecute(result)
+////
+////            progressDialog.dismiss()
+////            mTextViewResult.setText(result)
+////            Log.d(FragmentActivity.TAG, "response - " + result!!)
+////
+////            if (result == null) {
+////
+////                mTextViewResult.setText(errorString)
+////            } else {
+////
+////                mJsonString = result
+////                showResult()
+////            }
+////        }
+//
+//
+//        override fun doInBackground(vararg params: String): String? {
+//
+//            val serverURL = params[0]
+//            val postParameters = params[1]
+//
+//
+//            try {
+//
+//                val url = URL(serverURL)
+//                val httpURLConnection = url.openConnection() as HttpURLConnection
+//
+//
+//                httpURLConnection.setReadTimeout(5000)
+//                httpURLConnection.setConnectTimeout(5000)
+//                httpURLConnection.setRequestMethod("POST")
+//                httpURLConnection.setDoInput(true)
+//                httpURLConnection.connect()
+//
+//
+//                val outputStream = httpURLConnection.getOutputStream()
+//                outputStream.write(postParameters.toByteArray(charset("UTF-8")))
+//                outputStream.flush()
+//                outputStream.close()
+//
+//
+//                val responseStatusCode = httpURLConnection.getResponseCode()
+//                Log.d(MainActivity.TAG, "response code - $responseStatusCode")
+//
+//                val inputStream: InputStream
+//                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+//                    inputStream = httpURLConnection.getInputStream()
+//                } else {
+//                    inputStream = httpURLConnection.getErrorStream()
+//                }
+//
+//
+//                val inputStreamReader = InputStreamReader(inputStream, "UTF-8")
+//                val bufferedReader = BufferedReader(inputStreamReader)
+//
+//                val sb = StringBuilder()
+//                var line: String
+//
+//
+//
+//                bufferedReader.close()
+//
+//                return sb.toString().trim { it <= ' ' }
+//
+//
+//            } catch (e: Exception) {
+//
+//                Log.d(MainActivity.TAG, "GetData : Error ", e)
+//
+//
+//                return null
+//            }
+//
+//        }
+//    }
 
 
     //뒤로가기 눌렀을 때
