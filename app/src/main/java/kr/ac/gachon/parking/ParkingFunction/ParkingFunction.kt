@@ -1,68 +1,88 @@
 package kr.ac.gachon.parking.ParkingFunction
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import kotlinx.android.synthetic.main.activity_parking_function.*
 import kr.ac.gachon.parking.MainActivity
 import kr.ac.gachon.parking.R
+import java.util.*
 
 
 class ParkingFunction : AppCompatActivity() {
-    companion object {
-        var hour=Hour.AM1
-        var minute=Minute.min00
-        var fee=Fee.fee00
-    }
+
+    internal lateinit var alarm_manager: AlarmManager
+    internal lateinit var alarm_timepicker: TimePicker
+    internal lateinit var context: Context
+    internal lateinit var pendingIntent: PendingIntent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_parking_function)
 
-        //spinner 설정
-        //시
-        spin_hour.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,Hour.values().map{it.hour})
-        spin_hour.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) { }
+        this.context = this
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ParkingFunction.hour=Hour.values()[position]
-            }
+        // 알람매니저 설정
+        alarm_manager = getSystemService(ALARM_SERVICE) as AlarmManager
 
-        }
-        //분
-        spin_minute.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,Minute.values().map{it.minute})
-        spin_minute.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        // 타임피커 설정
+        alarm_timepicker = findViewById(R.id.time_picker)
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ParkingFunction.minute=Minute.values()[position]
-            }
-        }
-        //요금
-        spin_fee.adapter=ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,Fee.values().map{it.fee})
-        spin_fee.onItemSelectedListener=object:AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        // Calendar 객체 생성
+        val calendar = Calendar.getInstance()
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ParkingFunction.fee=Fee.values()[position]
-            }
-        }
+        // 알람리시버 intent 생성
+        val my_intent = Intent(this.context, AlarmReceiver::class.java)
 
-        btn_func_oks.setOnClickListener {
-            /* 시간 또는 요금에 도달 시 알림 설정 */
-            if(hour.hour.equals("")) {}
+        // 알람 시작 버튼
+        val alarm_on = findViewById<Button>(R.id.btn_start)
+        alarm_on.setOnClickListener(View.OnClickListener {
+            // calendar에 시간 셋팅
+            calendar.set(Calendar.HOUR_OF_DAY, alarm_timepicker.hour)
+            calendar.set(Calendar.MINUTE, alarm_timepicker.minute)
 
-            val func_to_finish= Intent(this, ParkingFunctionFinish::class.java)
-            startActivity(func_to_finish)
-        }
+            // 시간 가져옴
+            val hour = alarm_timepicker.hour
+            val minute = alarm_timepicker.minute
+            Toast.makeText(this, "Alarm 예정 " + hour + "시 " + minute + "분", Toast.LENGTH_SHORT).show()
 
-        btn_func_cancel.setOnClickListener{
-            val func_cancel=Intent(this, MainActivity::class.java)
-            startActivity(func_cancel)
-        }
+            // reveiver에 string 값 넘겨주기
+            my_intent.putExtra("state", "alarm on")
+            Log.d("alarm", "알람시작")
+
+            pendingIntent = PendingIntent.getBroadcast(
+                this, 0, my_intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
+
+            // 알람셋팅
+            alarm_manager.set(
+                AlarmManager.RTC_WAKEUP, calendar.timeInMillis,
+                pendingIntent
+            )
+        })
+
+        // 알람 정지 버튼
+        val alarm_off = findViewById<Button>(R.id.btn_finish)
+        alarm_off.setOnClickListener(View.OnClickListener {
+            Toast.makeText(this, "Alarm 종료", Toast.LENGTH_SHORT).show()
+            Log.d("alarm", "알람취소")
+            // 알람매니저 취소
+            alarm_manager.cancel(pendingIntent)
+
+            my_intent.putExtra("state", "alarm off")
+
+            // 알람취소
+            sendBroadcast(my_intent)
+        })
+
+
     }
 }

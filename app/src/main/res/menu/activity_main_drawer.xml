@@ -23,7 +23,7 @@
             <item
                     android:id="@+id/nav_dis_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
-                    android:title="장애인 주차구역"/>
+                    android:title="무료 주차구역"/>
             <item
                     android:id="@+id/nav_off_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
