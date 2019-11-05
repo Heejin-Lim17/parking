@@ -2,11 +2,13 @@ package kr.ac.gachon.parking
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import com.google.android.material.navigation.NavigationView
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
@@ -20,6 +22,10 @@ import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
 import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
+import java.util.ArrayList
+
+//internal var mJsonString: String = "" // static
+//internal var mArrayList: ArrayList<SeoulData>? = ArrayList<SeoulData>() // 위도, 경도 저장할 배열
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
@@ -27,6 +33,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     //지도 변수
     private lateinit var locationSource: FusedLocationSource
     private var mapView: MapView? = null
+
+//    private var mJsonString : String = "" // JSON 형태로 저장
+//    private var mArrayList: ArrayList<SeoulData>? = ArrayList<SeoulData>() // 위도, 경도 저장할 배열
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +66,9 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
         nav_view.setNavigationItemSelectedListener(this)
 
+        /* DB에서 lat, lng 받아오기 */
+        var task :GetData = GetData()
+        task.execute("http://$IP_ADDRESS/getjson_location0.php", "")
     }
 
     //Locationing
@@ -69,17 +82,26 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
+        private const val IP_ADDRESS = "192.168.43.149"
 
-//        //json 변수
-//        private var IP_ADDRESS="172.30.1.35";
-//        private var TAG="phptest"
     }
+
 
     /* MapView */
     override fun onMapReady(naverMap: NaverMap) {
-        val marker = Marker()
-        marker.position = LatLng(37.5670135, 126.9783740)
-        marker.map = naverMap
+//        val marker = Marker()
+//        marker.position = LatLng(37.5670135, 126.9783740)
+//        marker.map = naverMap
+//        Log.d("location", "mArrayList(0)  -  "+GetData.mArrayList.get(0).get_lat()!!.toDouble())
+        for (i in GetData.mArrayList.indices) {
+            var lat = GetData.mArrayList.get(i).get_lat()
+            var lng = GetData.mArrayList.get(i).get_lng()
+
+            var marker1 = Marker()
+            marker1.position = LatLng(lat!!.toDouble(), lng!!.toDouble())
+            marker1.map = naverMap
+        }
+
         naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
         naverMap.locationSource=locationSource
         naverMap.locationTrackingMode=LocationTrackingMode.Follow
