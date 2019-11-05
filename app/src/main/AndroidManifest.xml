@@ -34,8 +34,6 @@
         <activity android:name=".Group.GroupSetting">
         </activity>
 
-        <activity android:name=".ParkingFunction.ParkingFunctionFinish">
-        </activity>
         <activity
                 android:name=".ParkingFunction.ParkingFunction"
                 android:parentActivityName=".MainActivity">

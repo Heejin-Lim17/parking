@@ -1,5 +1,6 @@
 package kr.ac.gachon.parking
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
+import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -82,17 +85,14 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
-        private const val IP_ADDRESS = "192.168.43.149"
+        private const val IP_ADDRESS = "172.30.1.38"
 
     }
 
 
     /* MapView */
     override fun onMapReady(naverMap: NaverMap) {
-//        val marker = Marker()
-//        marker.position = LatLng(37.5670135, 126.9783740)
-//        marker.map = naverMap
-//        Log.d("location", "mArrayList(0)  -  "+GetData.mArrayList.get(0).get_lat()!!.toDouble())
+//ArrayList로 가져옴
         for (i in GetData.mArrayList.indices) {
             var lat = GetData.mArrayList.get(i).get_lat()
             var lng = GetData.mArrayList.get(i).get_lng()
@@ -100,13 +100,44 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             var marker1 = Marker()
             marker1.position = LatLng(lat!!.toDouble(), lng!!.toDouble())
             marker1.map = naverMap
+
+
+
+            naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
+            naverMap.locationSource = locationSource
+            naverMap.locationTrackingMode = LocationTrackingMode.Follow
+            naverMap.addOnLocationChangeListener { location ->
+            }
+
+            val infoWindow = InfoWindow()
+            infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(baseContext) {
+                override fun getText(infoWindow: InfoWindow): CharSequence {
+                    return "정보 창 내용"
+                }
+            }
+
+            marker1.tag = "마커 1"
+            val listener = Overlay.OnClickListener { overlay ->
+                val marker = overlay as Marker
+
+                if (marker.infoWindow == null) {
+                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    infoWindow.open(marker)
+                } else {
+                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+                    infoWindow.close()
+                }
+
+                true
+            }
+            marker1.onClickListener = listener
+
+
+
         }
 
-        naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
-        naverMap.locationSource=locationSource
-        naverMap.locationTrackingMode=LocationTrackingMode.Follow
-        naverMap.addOnLocationChangeListener { location->
-        }
+
+
     }
 
 
