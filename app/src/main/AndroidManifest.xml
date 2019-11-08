@@ -27,12 +27,6 @@
                 android:name=".ParkingFunction.RingtonePlayingService"
                 android:enabled="true"></service>
 
-        <activity android:name=".Group.SearchGroup.GroupSignupActivity">
-        </activity>
-        <activity android:name=".Group.SearchGroup.GroupSearching">
-        </activity>
-        <activity android:name=".Group.GroupSetting">
-        </activity>
 
         <activity
                 android:name=".ParkingFunction.ParkingFunction"
@@ -48,6 +42,7 @@
                 android:name=".Info.HolidayInfo"
                 android:parentActivityName=".MainActivity">
         </activity>
+
         <activity
                 android:name=".Info.FreeInfo"
                 android:parentActivityName=".MainActivity">
@@ -70,6 +65,15 @@
         <activity
                 android:name=".Group.MainGroup.GroupActivity"
                 android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".Group.GroupSet.GroupSet"
+                  android:parentActivityName=".Group.MainGroup.GroupActivity">
+        </activity>
+        <activity android:name=".Group.GroupSet.GroupSetFirst"
+                  android:parentActivityName=".Group.MainGroup.GroupActivity">
+        </activity>
+        <activity android:name=".Group.JoinGroup.JoinGroup"
+                  android:parentActivityName=".Group.MainGroup.GroupActivity">
         </activity>
         <activity
                 android:name=".Customer.SignupActivity"

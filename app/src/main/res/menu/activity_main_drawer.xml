@@ -23,11 +23,12 @@
             <item
                     android:id="@+id/nav_dis_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
-                    android:title="무료 주차구역"/>
+                    android:title="평일 무료 주차장 정보"/>
             <item
                     android:id="@+id/nav_off_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
-                    android:title="명절/연휴/공휴일 주차구역"/>
+                    android:title="주말/공휴일 주차장 정보"/>
+
             <item
                     android:id="@+id/nav_ava_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
@@ -37,10 +38,10 @@
 
     <item android:title="회원정보">
         <menu>
-            <item
-                    android:id="@+id/nav_mem_info"
-                    android:icon="@drawable/ic_folder_shared_black_24dp"
-                    android:title="회원정보"/>
+            <!--<item-->
+                    <!--android:id="@+id/nav_mem_info"-->
+                    <!--android:icon="@drawable/ic_folder_shared_black_24dp"-->
+                    <!--android:title="회원정보"/>-->
             <item
                     android:id="@+id/nav_login"
                     android:icon="@drawable/ic_face_black_24dp"

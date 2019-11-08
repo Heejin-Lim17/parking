@@ -1,3 +1,5 @@
+package kr.ac.gachon.parking.Data
+
 //package kr.ac.gachon.parking
 //
 //public class SeongnamData {

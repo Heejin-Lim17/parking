@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
-import kr.ac.gachon.parking.Customer.MyInfoActivity
+import kr.ac.gachon.parking.Data.GetData
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 //import kr.ac.gachon.parking.GetDataSeongnam.AddrArrayList
 import kr.ac.gachon.parking.Info.AvailableInfo
@@ -65,12 +65,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         nav_view.setNavigationItemSelectedListener(this)
 
         /* DB에서 lat, lng 받아오기 */
-        var task1 :GetData = GetData()
+        var task1 : GetData = GetData()
         task1.execute("http://$IP_ADDRESS/getjson_location0.php", "")
 
-//        var task2 :GetDataSeongnam = GetDataSeongnam()
-//        task2.execute("http://$IP_ADDRESS/getjson_location1.php", "")
-//        //GetDataSeongnam.toLocation()
+
     }
 
     //Locationing
@@ -85,7 +83,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
         const val IP_ADDRESS = "192.168.43.65"
-//        lateinit var geocoder :Geocoder
+        //        lateinit var geocoder :Geocoder
         lateinit var context : Context
     }
 
@@ -169,29 +167,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         D352.position = LatLng(37.431869, 127.157261)
         D352.map = naverMap
         D352.captionText="중상60,63"
-
-//        class data {
-//            private var addr:String? = null
-//            private var basic_time:String? = null
-//            private var basic_fee:String? = null
-//            private var add_time:String? = null
-//            private var add_fee:String? = null
-//            fun set_addr(addr:String?) {this.addr = addr;}
-//            fun set_basictime(basictime:String?) {this.basic_time = basictime;}
-//            fun set_basicfee(basicfee:String?) {this.basic_fee = basicfee;}
-//            fun set_addtime(addtime:String?) {this.add_time = addtime;}
-//            fun set_addfee(addfee:String?) {this.add_fee = addfee;}
-//        }
-//
-//        var sndata = data()
-//        var snArrayList = ArrayList<data>()
-//        sndata.set_addr("경기도 성남시 수정구 복정로20번길 16")
-//        sndata.set_basictime("30")
-//        sndata.set_basicfee("400")
-//        sndata.set_addtime("10")
-//        sndata.set_addfee("200")
-//        snArrayList.add(sndata)
-
 
 
         val infoWindowB16=InfoWindow()
@@ -383,7 +358,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
                 val marker = overlay as Marker
 
                 if (marker.infoWindow == null) {
-                // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
                     infoWindow.open(marker)
                 } else {
                     // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
@@ -393,33 +368,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             }
             marker1.onClickListener = listener
         }
-
-////        /* 성남 마커 */
-//        for (i in GetDataSeongnam.AddrArrayList.indices) {
-//            var lat = GetDataSeongnam.AddrArrayList.get(i).get_lat()
-//            var lng = GetDataSeongnam.AddrArrayList.get(i).get_lng()
-////            var info=GetData.mArrayList.get(i).
-//
-//            var marker2 = Marker()
-//            marker2.position = LatLng(lat!!.toDouble(), lng!!.toDouble())
-//            marker2.map = naverMap
-//
-//            val infoWindow = InfoWindow()
-//            marker2.tag = "마커 2"
-//            val listener = Overlay.OnClickListener { overlay ->
-//                val marker = overlay as Marker
-//
-//                if (marker.infoWindow == null) {
-//                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
-//                    infoWindow.open(marker)
-//                } else {
-//                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
-//                    infoWindow.close()
-//                }
-//                true
-//            }
-//            marker2.onClickListener = listener
-//        }
 
     }
 
@@ -474,10 +422,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
                 val available_intent=Intent(this, AvailableInfo::class.java)
                 startActivity(available_intent)
             }
-            R.id.nav_mem_info -> {
-                val myinfo_intent=Intent(this, MyInfoActivity::class.java)
-                startActivity(myinfo_intent)
-            }
             R.id.nav_login -> {
                 val login_intent= Intent(this, LoginActivity::class.java)
                 startActivity(login_intent)
@@ -489,7 +433,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     }
 
 }
-
 
 
 

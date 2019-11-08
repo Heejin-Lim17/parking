@@ -99,7 +99,7 @@ public class GroupMakingActivity extends AppCompatActivity {
 
 
             AlertDialog.Builder builder = new AlertDialog.Builder(GroupMakingActivity.this);
-            builder.setMessage("그룹가입을 축하합니다.");
+            builder.setMessage("그룹생성을 축하합니다.");
             builder.setPositiveButton("확인",new DialogInterface.OnClickListener(){
                 @Override
                 public  void onClick(DialogInterface dialog, int which){

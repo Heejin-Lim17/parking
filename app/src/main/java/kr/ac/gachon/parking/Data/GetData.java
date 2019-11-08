@@ -1,4 +1,4 @@
-package kr.ac.gachon.parking;
+package kr.ac.gachon.parking.Data;
 
 import android.os.AsyncTask;
 import android.util.Log;

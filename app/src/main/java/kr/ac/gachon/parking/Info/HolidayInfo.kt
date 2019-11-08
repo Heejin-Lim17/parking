@@ -13,7 +13,9 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.util.MarkerIcons
-import kr.ac.gachon.parking.GetData
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar_main.*
+import kr.ac.gachon.parking.Data.GetData
 import kr.ac.gachon.parking.R
 
 class HolidayInfo : AppCompatActivity(), OnMapReadyCallback {

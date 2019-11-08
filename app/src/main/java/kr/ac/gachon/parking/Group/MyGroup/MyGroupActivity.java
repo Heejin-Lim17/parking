@@ -26,8 +26,8 @@ import java.net.URL;
 public class MyGroupActivity extends AppCompatActivity {
     private static String TAG = "사용자 그룹 조회";
     String[] garray;
-    private EditText userid;
-    private TextView glist1,glist2,glist3;
+    EditText userid;
+    TextView glist1,glist2,glist3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
