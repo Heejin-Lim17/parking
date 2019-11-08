@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
-//import kr.ac.gachon.parking.GetDataSeongnam.AddrArrayList
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
+//import kr.ac.gachon.parking.GetDataSeongnam.AddrArrayList
 import kr.ac.gachon.parking.Info.AvailableInfo
 import kr.ac.gachon.parking.Info.FreeInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
-        private const val IP_ADDRESS = "192.168.43.65"
+        const val IP_ADDRESS = "192.168.43.65"
 //        lateinit var geocoder :Geocoder
         lateinit var context : Context
     }
