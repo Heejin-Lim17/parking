@@ -102,6 +102,11 @@ public class GetData extends AsyncTask<String, Void, String> {
         String TAG_JSON="location";
         String TAG_LAT = "pkl_Latitude";
         String TAG_LNG = "pkl_longitude";
+        String TAG_ADDR = "pkl_address"; // 주소
+        String TAG_BASICTIME = "pk_basic_time"; // 주차기본시간
+        String TAG_BASICFEE = "pk_basic_fee"; //주차기본요금
+        String TAG_ADDTIME = "add_time"; // 추가단위시간
+        String TAG_ADDFEE = "add_fee"; // 추가단위요금
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -113,17 +118,24 @@ public class GetData extends AsyncTask<String, Void, String> {
 
                 String lat = item.getString(TAG_LAT);
                 String lng = item.getString(TAG_LNG);
-
-                //System.out.println(lat+ "    " + lng);
+                String addr = item.getString(TAG_ADDR);
+                String basic_time = item.getString(TAG_BASICTIME);
+                Integer basic_fee = item.getInt(TAG_BASICFEE);
+                Integer add_time = item.getInt(TAG_ADDTIME);
+                Integer add_fee = item.getInt(TAG_ADDFEE);
 
                 SeoulData seoulData = new SeoulData();
-
                 seoulData.set_lat(lat);
                 seoulData.set_lng(lng);
-
+                seoulData.set_addr(addr);
+                seoulData.set_basictime(basic_time);
+                seoulData.set_basicfee(basic_fee);
+                seoulData.set_addtime(add_time);
+                seoulData.set_addfee(add_fee);
                 mArrayList.add(seoulData);
-                System.out.println("--------------------------------");
-                System.out.println(mArrayList.get(0).get_lat());
+
+//                System.out.println("--------------------------------");
+//                System.out.println(mArrayList.get(0).get_addr());
 
             }
 

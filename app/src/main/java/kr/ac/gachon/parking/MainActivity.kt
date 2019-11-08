@@ -2,6 +2,8 @@ package kr.ac.gachon.parking
 
 import android.content.Context
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -21,15 +23,16 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
 import kr.ac.gachon.parking.Customer.MyInfoActivity
+//import kr.ac.gachon.parking.GetDataSeongnam.AddrArrayList
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 import kr.ac.gachon.parking.Info.DisabledInfo
 import kr.ac.gachon.parking.Info.HolidayInfo
 import kr.ac.gachon.parking.ParkingFunction.ParkingFunction
+import java.io.IOException
 import java.util.ArrayList
 
 //internal var mJsonString: String = "" // static
 //internal var mArrayList: ArrayList<SeoulData>? = ArrayList<SeoulData>() // 위도, 경도 저장할 배열
-
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnNavigationItemSelectedListener{
 
@@ -37,16 +40,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     private lateinit var locationSource: FusedLocationSource
     private var mapView: MapView? = null
 
-//    private var mJsonString : String = "" // JSON 형태로 저장
-//    private var mArrayList: ArrayList<SeoulData>? = ArrayList<SeoulData>() // 위도, 경도 저장할 배열
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        //context = this // Geocoder에 넣을 context
 
         /* MapView 설정 */
         mapView = findViewById(R.id.map_view)
@@ -70,8 +69,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         nav_view.setNavigationItemSelectedListener(this)
 
         /* DB에서 lat, lng 받아오기 */
-        var task :GetData = GetData()
-        task.execute("http://$IP_ADDRESS/getjson_location0.php", "")
+        var task1 :GetData = GetData()
+        task1.execute("http://$IP_ADDRESS/getjson_location0.php", "")
+
+//        var task2 :GetDataSeongnam = GetDataSeongnam()
+//        task2.execute("http://$IP_ADDRESS/getjson_location1.php", "")
+//        //GetDataSeongnam.toLocation()
     }
 
     //Locationing
@@ -85,34 +88,38 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE=1000
-        private const val IP_ADDRESS = "172.30.1.38"
-
+        private const val IP_ADDRESS = "192.168.43.65"
+//        lateinit var geocoder :Geocoder
+        lateinit var context : Context
     }
 
 
     /* MapView */
     override fun onMapReady(naverMap: NaverMap) {
-//ArrayList로 가져옴
+//        var marker0 = Marker()
+//        marker0.position = LatLng(,)
+//        marker0.map = naverMap
+
+        /* 서울 마커 */
         for (i in GetData.mArrayList.indices) {
             var lat = GetData.mArrayList.get(i).get_lat()
             var lng = GetData.mArrayList.get(i).get_lng()
+//            var info=GetData.mArrayList.get(i).
 
             var marker1 = Marker()
             marker1.position = LatLng(lat!!.toDouble(), lng!!.toDouble())
             marker1.map = naverMap
 
-
-
             naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
-            naverMap.locationSource = locationSource
-            naverMap.locationTrackingMode = LocationTrackingMode.Follow
-            naverMap.addOnLocationChangeListener { location ->
+            naverMap.locationSource=locationSource
+            naverMap.locationTrackingMode=LocationTrackingMode.Follow
+            naverMap.addOnLocationChangeListener { location->
             }
 
             val infoWindow = InfoWindow()
             infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(baseContext) {
                 override fun getText(infoWindow: InfoWindow): CharSequence {
-                    return "정보 창 내용"
+                return "정보 창 내용"
                 }
             }
 
@@ -121,22 +128,43 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
                 val marker = overlay as Marker
 
                 if (marker.infoWindow == null) {
-                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+                // 현재 마커에 정보 창이 열려있지 않을 경우 엶
                     infoWindow.open(marker)
                 } else {
                     // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
                     infoWindow.close()
                 }
-
                 true
             }
             marker1.onClickListener = listener
-
-
-
         }
 
-
+////        /* 성남 마커 */
+//        for (i in GetDataSeongnam.AddrArrayList.indices) {
+//            var lat = GetDataSeongnam.AddrArrayList.get(i).get_lat()
+//            var lng = GetDataSeongnam.AddrArrayList.get(i).get_lng()
+////            var info=GetData.mArrayList.get(i).
+//
+//            var marker2 = Marker()
+//            marker2.position = LatLng(lat!!.toDouble(), lng!!.toDouble())
+//            marker2.map = naverMap
+//
+//            val infoWindow = InfoWindow()
+//            marker2.tag = "마커 2"
+//            val listener = Overlay.OnClickListener { overlay ->
+//                val marker = overlay as Marker
+//
+//                if (marker.infoWindow == null) {
+//                    // 현재 마커에 정보 창이 열려있지 않을 경우 엶
+//                    infoWindow.open(marker)
+//                } else {
+//                    // 이미 현재 마커에 정보 창이 열려있을 경우 닫음
+//                    infoWindow.close()
+//                }
+//                true
+//            }
+//            marker2.onClickListener = listener
+//        }
 
     }
 
