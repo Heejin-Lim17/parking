@@ -108,6 +108,13 @@ public class GetData extends AsyncTask<String, Void, String> {
         String TAG_ADDTIME = "add_time"; // 추가단위시간
         String TAG_ADDFEE = "add_fee"; // 추가단위요금
 
+        String TAG_FEE_TF = "fee_division";
+        String TAG_SAT_TF = "saturdat_fee_devision";
+        String TAG_HOL_TF = "holiday_fee_division";
+        String TAG_DAY_CLOSE = "weekday_close_time";
+        String TAG_WEEKEND_CLOSE = "weekend_close_time";
+        String TAG_HOL_CLOSE = "holiday_close_time";
+
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
             JSONArray jsonArray = jsonObject.getJSONArray(TAG_JSON);
@@ -123,6 +130,12 @@ public class GetData extends AsyncTask<String, Void, String> {
                 Integer basic_fee = item.getInt(TAG_BASICFEE);
                 Integer add_time = item.getInt(TAG_ADDTIME);
                 Integer add_fee = item.getInt(TAG_ADDFEE);
+                String fee_division = item.getString(TAG_FEE_TF);
+                String saturday_fee_devision = item.getString(TAG_SAT_TF);
+                String holiday_fee_division = item.getString(TAG_HOL_TF);
+                String weekday_close_time = item.getString(TAG_DAY_CLOSE);
+                String weekend_close_time = item.getString(TAG_WEEKEND_CLOSE);
+                String holiday_close_time = item.getString(TAG_HOL_CLOSE);
 
                 SeoulData seoulData = new SeoulData();
                 seoulData.set_lat(lat);
@@ -132,12 +145,20 @@ public class GetData extends AsyncTask<String, Void, String> {
                 seoulData.set_basicfee(basic_fee);
                 seoulData.set_addtime(add_time);
                 seoulData.set_addfee(add_fee);
+                seoulData.set_fee_division(fee_division);
+                seoulData.set_saturday_fee_devision(saturday_fee_devision);
+                seoulData.set_holiday_fee_division(holiday_fee_division);
+                seoulData.set_weekday_close_time(weekday_close_time);
+                seoulData.set_weekend_close_time(weekend_close_time);
+                seoulData.set_holiday_close_time(holiday_close_time);
                 mArrayList.add(seoulData);
 
 //                System.out.println("--------------------------------");
-//                System.out.println(mArrayList.get(0).get_addr());
+//                System.out.println(mArrayList.get(0).get_holiday_close_time());
+               // System.out.println(mArrayList.get(0).get_addr());
 
             }
+//            System.out.println(mArrayList.get(0).get_holiday_close_time());
 
         } catch (JSONException e) {
             Log.d("location", "showResult : ", e);

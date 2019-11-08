@@ -9,7 +9,16 @@ public class SeoulData {
     var add_time: Int? = null
     var add_fee: Int? = null
 
+    var fee_division: String? =null
+    var saturday_fee_devision: String? =null
+    var holiday_fee_division: String? =null
+    var weekday_close_time: String? =null
+    var weekend_close_time: String? =null
+    var holiday_close_time: String? =null
 
+    public fun get_holiday_close_time(): String? {
+        return holiday_close_time;
+    }
     public fun get_lat() : String? {
         return lat
     }
@@ -54,4 +63,22 @@ public class SeoulData {
         this.add_fee = addfee
     }
 
+    public fun set_fee_division(fee_division:String) {
+        this.fee_division = fee_division
+    }
+    public fun set_saturday_fee_devision(saturday_fee_devision:String) {
+        this.saturday_fee_devision = saturday_fee_devision
+    }
+    public fun set_holiday_fee_division(holiday_fee_division:String) {
+        this.holiday_fee_division = holiday_fee_division
+    }
+    public fun set_weekday_close_time(weekday_close_time:String) {
+        this.weekday_close_time = weekday_close_time
+    }
+    public fun set_weekend_close_time(weekend_close_time:String) {
+        this.weekend_close_time = weekend_close_time
+    }
+    public fun set_holiday_close_time(holiday_close_time:String) {
+        this.holiday_close_time = holiday_close_time
+    }
 }
