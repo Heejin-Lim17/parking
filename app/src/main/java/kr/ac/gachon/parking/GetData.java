@@ -1,8 +1,8 @@
 package kr.ac.gachon.parking;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
+import kr.ac.gachon.parking.Data.SeoulData;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -107,13 +107,14 @@ public class GetData extends AsyncTask<String, Void, String> {
         String TAG_BASICFEE = "pk_basic_fee"; //주차기본요금
         String TAG_ADDTIME = "add_time"; // 추가단위시간
         String TAG_ADDFEE = "add_fee"; // 추가단위요금
-
         String TAG_FEE_TF = "fee_division";
         String TAG_SAT_TF = "saturdat_fee_devision";
         String TAG_HOL_TF = "holiday_fee_division";
         String TAG_DAY_CLOSE = "weekday_close_time";
         String TAG_WEEKEND_CLOSE = "weekend_close_time";
         String TAG_HOL_CLOSE = "holiday_close_time";
+        String TAG_NAME="pkl_name";
+        String TAG_CARS="pkl_possible_num";
 
         try {
             JSONObject jsonObject = new JSONObject(mJsonString);
@@ -136,6 +137,10 @@ public class GetData extends AsyncTask<String, Void, String> {
                 String weekday_close_time = item.getString(TAG_DAY_CLOSE);
                 String weekend_close_time = item.getString(TAG_WEEKEND_CLOSE);
                 String holiday_close_time = item.getString(TAG_HOL_CLOSE);
+                String name=item.getString(TAG_NAME);
+                Integer cars=item.getInt(TAG_CARS);
+
+
 
                 SeoulData seoulData = new SeoulData();
                 seoulData.set_lat(lat);
@@ -151,14 +156,15 @@ public class GetData extends AsyncTask<String, Void, String> {
                 seoulData.set_weekday_close_time(weekday_close_time);
                 seoulData.set_weekend_close_time(weekend_close_time);
                 seoulData.set_holiday_close_time(holiday_close_time);
+                seoulData.set_name(name);
+                seoulData.set_cars(cars);
+
                 mArrayList.add(seoulData);
 
 //                System.out.println("--------------------------------");
-//                System.out.println(mArrayList.get(0).get_holiday_close_time());
-               // System.out.println(mArrayList.get(0).get_addr());
+//                System.out.println(mArrayList.get(0).get_addr());
 
             }
-//            System.out.println(mArrayList.get(0).get_holiday_close_time());
 
         } catch (JSONException e) {
             Log.d("location", "showResult : ", e);

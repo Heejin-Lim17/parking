@@ -1,4 +1,4 @@
-package kr.ac.gachon.parking
+package kr.ac.gachon.parking.Data
 
 public class SeoulData {
     var lat: String? = null
@@ -8,17 +8,16 @@ public class SeoulData {
     var basic_fee: Int? =null
     var add_time: Int? = null
     var add_fee: Int? = null
-
     var fee_division: String? =null
     var saturday_fee_devision: String? =null
     var holiday_fee_division: String? =null
     var weekday_close_time: String? =null
     var weekend_close_time: String? =null
     var holiday_close_time: String? =null
+    var name:String?=null
+    var cars:Int?=null
 
-    public fun get_holiday_close_time(): String? {
-        return holiday_close_time;
-    }
+
     public fun get_lat() : String? {
         return lat
     }
@@ -39,6 +38,12 @@ public class SeoulData {
     }
     public fun get_addfee() : Int? {
         return this.add_fee
+    }
+    public fun get_name():String?{
+        return this.name
+    }
+    public fun get_cars():Int?{
+        return this.cars
     }
 
     public fun set_lat(lat:String) {
@@ -80,5 +85,11 @@ public class SeoulData {
     }
     public fun set_holiday_close_time(holiday_close_time:String) {
         this.holiday_close_time = holiday_close_time
+    }
+    public fun set_name(name:String){
+        this.name=name
+    }
+    public fun set_cars(cars:Int){
+        this.cars=cars
     }
 }

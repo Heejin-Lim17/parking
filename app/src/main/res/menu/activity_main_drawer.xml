@@ -28,6 +28,10 @@
                     android:id="@+id/nav_off_info"
                     android:icon="@drawable/ic_pin_drop_black_24dp"
                     android:title="명절/연휴/공휴일 주차구역"/>
+            <item
+                    android:id="@+id/nav_ava_info"
+                    android:icon="@drawable/ic_pin_drop_black_24dp"
+                    android:title="주차장별 주차 구역 수"/>
         </menu>
     </item>
 

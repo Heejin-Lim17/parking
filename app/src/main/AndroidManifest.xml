@@ -38,12 +38,18 @@
                 android:name=".ParkingFunction.ParkingFunction"
                 android:parentActivityName=".MainActivity">
         </activity>
+
+        <activity
+                android:name=".Info.AvailableInfo"
+                android:parentActivityName=".MainActivity">
+        </activity>
+
         <activity
                 android:name=".Info.HolidayInfo"
                 android:parentActivityName=".MainActivity">
         </activity>
         <activity
-                android:name=".Info.DisabledInfo"
+                android:name=".Info.FreeInfo"
                 android:parentActivityName=".MainActivity">
         </activity>
 
