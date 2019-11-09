@@ -64,6 +64,9 @@ class HolidayInfo : AppCompatActivity(), OnMapReadyCallback {
                 markera.icon = MarkerIcons.BLACK
                 markera.iconTintColor = Color.MAGENTA
 
+                naverMap.mapType = NaverMap.MapType.Navi
+                naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
+
                 //정보창 설정
                 val infoWindow = InfoWindow()
                 infoWindow.adapter = object : InfoWindow.DefaultTextAdapter(baseContext) {

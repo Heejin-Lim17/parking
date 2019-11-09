@@ -14,19 +14,12 @@
         android:gravity="bottom">
 
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="86dp"
+            android:layout_height="85dp"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@mipmap/ic_launcher_round"
+            app:srcCompat="@drawable/car"
             android:contentDescription="@string/nav_header_desc"
             android:id="@+id/imageView"/>
-
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="hi"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" android:id="@+id/nav_id"/>
 
     <Button
             android:text="오늘도 안전주차하세요:)"

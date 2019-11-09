@@ -55,7 +55,10 @@ class AvailableInfo: AppCompatActivity(), OnMapReadyCallback {
             marker1.map = naverMap
 
             marker1.icon = MarkerIcons.BLACK
-            marker1.iconTintColor = Color.LTGRAY
+            marker1.iconTintColor = Color.DKGRAY
+
+            naverMap.mapType = NaverMap.MapType.Navi
+            naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
 
             //정보창 설정
             val infoWindow = InfoWindow()

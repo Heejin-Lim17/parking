@@ -14,7 +14,7 @@
             android:gravity="center"
             android:layout_height="140dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="48dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toTopOf="@+id/ll_input" app:layout_constraintHorizontal_bias="0.0">
 
         <TextView
@@ -47,7 +47,7 @@
             android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
-            android:layout_marginBottom="60dp" app:layout_constraintBottom_toTopOf="@+id/linearLayoutb">
+            android:layout_marginBottom="40dp" app:layout_constraintBottom_toTopOf="@+id/linearLayoutb">
 
         <EditText
                 android:id="@+id/login_id"

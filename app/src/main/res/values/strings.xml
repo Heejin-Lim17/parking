@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">parking</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">로그인/회원가입 </string>
+    <string name="title_activity_group">삐빅 그룹 </string>
+    <string name="title_activity_disabled_info">평일 무료 주차장 정보 </string>
+    <string name="title_activity_holiday_info">주말/공휴일 주차장 정보 </string>
+    <string name="title_activity__info">주말/공휴일 주차장 정보 </string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

@@ -15,10 +15,11 @@ import com.naver.maps.map.overlay.InfoWindow
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.util.FusedLocationSource
+import kotlinx.android.synthetic.main.activity_group_making.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Customer.LoginActivity
+import kr.ac.gachon.parking.Group.MainGroup.GroupActivity
 import kr.ac.gachon.parking.Data.GetData
 import kr.ac.gachon.parking.Group.MyGroup.MyGroupActivity
 //import kr.ac.gachon.parking.GetDataSeongnam.AddrArrayList
@@ -36,10 +37,12 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     private lateinit var locationSource: FusedLocationSource
     private var mapView: MapView? = null
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
 
         //context = this // Geocoder에 넣을 context
 
@@ -85,6 +88,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
         const val IP_ADDRESS = "192.168.43.65"
         //        lateinit var geocoder :Geocoder
         lateinit var context : Context
+
     }
 
 
@@ -333,6 +337,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             marker1.map = naverMap
             marker1.captionText = (GetData.mArrayList.get(i).get_name()).toString()
 
+            naverMap.mapType = NaverMap.MapType.Navi
             naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
             naverMap.locationSource=locationSource
             naverMap.locationTrackingMode=LocationTrackingMode.Follow
@@ -372,6 +377,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
     }
 
 
+
+
     //뒤로가기 눌렀을 때
     override fun onBackPressed() {
         if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
@@ -380,22 +387,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, NavigationView.OnN
             super.onBackPressed()
         }
     }
-    //메뉴 입력해놓은거 가져오기
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-    //메뉴 설정
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+
     //네비게이션 드로어 클릭했을 때 페이지 넘어가는 것
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.

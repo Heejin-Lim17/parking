@@ -14,7 +14,9 @@
 
 
 
+
     <application
+            android:usesCleartextTraffic="true"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="parking"
@@ -76,7 +78,7 @@
                   android:parentActivityName=".Group.MainGroup.GroupActivity">
         </activity>
         <activity
-                android:name=".Customer.SignupActivity"
+                android:name=".Customer.signActivity"
                 android:parentActivityName=".MainActivity">
         </activity>
         <activity

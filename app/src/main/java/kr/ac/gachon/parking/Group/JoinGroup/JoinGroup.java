@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import kr.ac.gachon.parking.Customer.LoginActivity;
 import kr.ac.gachon.parking.MainActivity;
 import kr.ac.gachon.parking.R;
 
@@ -227,7 +228,7 @@ public class JoinGroup extends AppCompatActivity {
                         //사용자 이름을 불러와야한다.
                         // 그룹은 cname에서 불러오기
                         SignData task30 = new SignData();
-                        String unm ="d"; //사용자 아이디 입력하기
+                        String unm = LoginActivity.ingid; //사용자 아이디 입력하기
                         String gnm =cname.getText().toString(); //그룹 이름 넣어주기
                         task30.execute("http://"+MainActivity.IP_ADDRESS + "/gs.php",unm,gnm); //추가하는 php
 

@@ -1,6 +1,8 @@
 package kr.ac.gachon.parking.Group.GroupSet;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,8 +10,11 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import kr.ac.gachon.parking.Customer.signActivity;
 import kr.ac.gachon.parking.Group.MainGroup.GroupActivity;
 import kr.ac.gachon.parking.MainActivity;
 import kr.ac.gachon.parking.R;
@@ -24,39 +29,39 @@ import java.net.URL;
 public class GroupSet  extends AppCompatActivity {
     private String gnm; //intent받기위해서 필요함
     private static String TAG = "그룹비용확인";
-    private TextView gname,gbill;
+    private TextView groupname;
+    private TextView groupbill;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_set);
-
         Intent intent = getIntent();
         gnm = intent.getStringExtra("gnm");
 
-        gname = (TextView)findViewById(R.id.gnm); //textview find
-        gbill = (TextView)findViewById(R.id.gbill); //비용이 들어가야 함
+        groupname = (TextView) findViewById(R.id.ignm);
+        groupbill= (TextView) findViewById(R.id.gbill);
+        groupbill.setMovementMethod(new ScrollingMovementMethod());
+        groupname.setText(gnm);
 
-        gbill.setMovementMethod(new ScrollingMovementMethod());
+        Button button = (Button)findViewById(R.id.button);
 
-        gname.setText(gnm); //불러오는 그룹 이름 넣기
-        Button btn_finish=(Button)findViewById(R.id.btn_g_set_finish);
-
-        btn_finish.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InsertDat task1 = new InsertDat(); //그룹 비용 확인하기//
-                task1.execute("http://" + MainActivity.IP_ADDRESS + "/gbs.php", gnm); //그룹이름 전달하기
-                Intent intent = new Intent(getApplicationContext(), GroupActivity.class);
-                startActivity(intent);
+
+                final String gnm = groupname.getText().toString(); //edittext 그룹이름 string으로 만들기
+
+                InsertData task = new InsertData();
+                task.execute("http://" + MainActivity.IP_ADDRESS + "/css.php", gnm);
+                //그룹이름과 관리자 비밀번호 입력해서 관리자 로그인하는 php연결
+
             }
-        });
+        }); //button 닫는 문
+    } // onCreate  닫는 문
 
-
-    } //onCreate 닫는 문
-
-    class InsertDat extends AsyncTask<String, Void, String> {
+    class InsertData extends AsyncTask<String, Void, String> {
         ProgressDialog progressDialog;
 
 
@@ -67,14 +72,16 @@ public class GroupSet  extends AppCompatActivity {
                     "Please Wait", null, true, true);
         }
 
+
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             progressDialog.dismiss();
-            gbill.setText(result);
+            groupbill.setText(result);
 
 
-        }
+
+        }//onpost닫는 문
 
         @Override
         protected String doInBackground(String... params) {
@@ -83,7 +90,7 @@ public class GroupSet  extends AppCompatActivity {
 
             String serverURL = (String) params[0];
 
-            String postParameters = "name="+name; //그룹 이름 전달해주기
+            String postParameters = "name="+name;
 
             //name이 사용자 이름 , pw가 그룹이름
 
@@ -138,6 +145,6 @@ public class GroupSet  extends AppCompatActivity {
 
 
 
-    } //insertData닫는 문
+    } //insetdata  닫는 문
 
 }

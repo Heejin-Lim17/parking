@@ -28,6 +28,8 @@ class FreeInfo : AppCompatActivity(), OnMapReadyCallback {
         mapView2 = findViewById(R.id.dis_map)
         mapView2!!.getMapAsync(this)
 
+
+
         locationSource2=FusedLocationSource(this, FreeInfo.LOCATION_PERMISSION_REQUEST_CODE)
 
     }
@@ -50,6 +52,9 @@ class FreeInfo : AppCompatActivity(), OnMapReadyCallback {
         for (i in GetData.mArrayList.indices) {
             var lat = GetData.mArrayList.get(i).get_lat()
             var lng = GetData.mArrayList.get(i).get_lng()
+
+            naverMap.mapType = NaverMap.MapType.Navi
+            naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRAFFIC, true)
 
             if(GetData.mArrayList.get(i).fee_division.equals("무료")){
 //              if(GetData.mArrayList.get(i).basic_fee==0 && GetData.mArrayList.get(i).add_fee==0){

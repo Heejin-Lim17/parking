@@ -91,7 +91,7 @@ public class MyGroupActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 PostData task1 = new PostData();
-                                task1.execute("http://" + MainActivity.IP_ADDRESS + "/gbill.php", glist2.getText().toString(), et.getText().toString()); //그룹 이름과 더할 돈을 같이 줘야함
+                                task1.execute("http://" + MainActivity.IP_ADDRESS + "/gb.php", glist2.getText().toString(), et.getText().toString()); //그룹 이름과 더할 돈을 같이 줘야함
                             }
                         }); //확인 닫는 문
                         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -115,7 +115,7 @@ public class MyGroupActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 PostData task1 = new PostData();
-                                task1.execute("http://" + MainActivity.IP_ADDRESS + "/gbill.php", glist3.getText().toString(), et.getText().toString()); //그룹 이름과 더할 돈을 같이 줘야함
+                                task1.execute("http://" + MainActivity.IP_ADDRESS + "/gb.php", glist3.getText().toString(), et.getText().toString()); //그룹 이름과 더할 돈을 같이 줘야함
                             }
                         }); //확인 닫는 문
                         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
