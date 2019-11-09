@@ -31,7 +31,7 @@ public class GroupMakingActivity extends AppCompatActivity {
     private EditText Textgpw;
     private EditText Textapw;
     private EditText Textaemail;
-    private TextView TextResult;
+   // private TextView TextResult;
 
 
     @Override
@@ -45,7 +45,7 @@ public class GroupMakingActivity extends AppCompatActivity {
         Textaemail = (EditText) findViewById(R.id.adminemail);
 
 
-        TextResult.setMovementMethod(new ScrollingMovementMethod());
+      //  TextResult.setMovementMethod(new ScrollingMovementMethod());
         Button btsignup = (Button) findViewById(R.id.btn_signup_ok); //가입 버튼
         Button btcancel = (Button) findViewById(R.id.btn_signup_cancel);  //취소 버튼
 

@@ -77,8 +77,8 @@
             app:layout_constraintVertical_bias="1.0"/>
     <TextView
             android:text="원"
-            android:layout_width="33dp"
-            android:layout_height="32dp"
+            android:layout_width="39dp"
+            android:layout_height="39dp"
             android:id="@+id/textView18"
             android:textSize="30sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/gbill" app:layout_constraintEnd_toEndOf="parent"
